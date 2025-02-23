@@ -25,3 +25,28 @@ module "sandbox" {
 
   account_customizations_name = "sandbox"
 }
+
+
+module "Security" {
+  source = "./modules/aft-account-request"
+
+  control_tower_parameters = {
+    AccountEmail              = "malsaksh@amazon.com"
+    AccountName               = "Security"
+    ManagedOrganizationalUnit = "Sandbox"
+    SSOUserEmail              = "malsaksh@amazon.com"
+    SSOUserFirstName          = "Sakshi"
+    SSOUserLastName           = "Malhotra"
+  }
+
+  account_tags = {
+    "Learn Tutorial" = "AFT"
+  }
+
+  change_management_parameters = {
+    change_requested_by = "Security"
+    change_reason       = "Creating new Security AWS account"
+  }
+
+  account_customizations_name = "Security-Security"
+}
